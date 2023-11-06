@@ -6,7 +6,7 @@ import {
   StyleSheet,
   ActivityIndicator,
   TouchableOpacity,
-  Button,
+  RefreshControl,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import {styles} from '@styles/index';
@@ -24,6 +24,7 @@ interface RenderTaskItemProps {
 const HomeScreen = () => {
   const {
     setTaskName,
+    setRefreshing,
     getTasks,
     getTasksPrivate,
     addNewTask,
@@ -31,6 +32,7 @@ const HomeScreen = () => {
     deleteTask,
     toggleTask,
     editTaskName,
+    refreshing,
     loading,
     taskName,
     tasks,
@@ -48,6 +50,7 @@ const HomeScreen = () => {
         getTasks(userUid);
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (loading) {
@@ -57,6 +60,23 @@ const HomeScreen = () => {
       </View>
     );
   }
+
+  const onRefresh = () => {
+    setRefreshing(true);
+
+    if (userUid) {
+      if (
+        userUid === 'Vr90ngjP4XWagcJVyoXY7IinTLr1' ||
+        userUid === 'ZhmI9wRSe6PqEXjmgwuHGEyA1j63'
+      ) {
+        getTasksPrivate();
+      } else {
+        getTasks(userUid);
+      }
+    }
+
+    setRefreshing(false);
+  };
 
   const renderItem = ({index, item}: RenderTaskItemProps) => (
     <TaskItem
@@ -79,7 +99,9 @@ const HomeScreen = () => {
 
       <Text style={styles.title}>Gerenciador de tarefas</Text>
 
-      <Button title="Sair" onPress={signOut} />
+      <TouchableOpacity onPress={signOut} style={stylesHome.buttonOut}>
+        <Text style={stylesHome.TextButtonOut}>Sair</Text>
+      </TouchableOpacity>
 
       <View style={stylesHome.row}>
         <HomeInput
@@ -95,7 +117,14 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </View>
 
-      <FlatList data={tasks} renderItem={renderItem} style={{width: '100%'}} />
+      <FlatList
+        data={tasks}
+        renderItem={renderItem}
+        style={{width: '100%'}}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+      />
     </View>
   );
 };
@@ -118,13 +147,21 @@ const stylesHome = StyleSheet.create({
   homeInput: {
     borderRadius: 8,
     borderColor: '#a59e9e',
-    paddingHorizontal: 10,
+    padding: 10,
     color: '#000',
     borderWidth: 1,
     width: '82%',
-    height: 40,
+    height: 44,
     marginRight: 10,
-    fontSize: 16,
+    fontSize: 20,
+  },
+  buttonOut: {
+    marginTop: 5,
+  },
+  TextButtonOut: {
+    fontSize: 20,
+    color: '#dd0f0f',
+    alignSelf: 'center',
   },
   buttonAddTask: {
     borderRadius: 8,
@@ -135,7 +172,7 @@ const stylesHome = StyleSheet.create({
     backgroundColor: '#4fbb10',
   },
   icon: {
-    fontSize: 26,
+    fontSize: 28,
     color: '#fff',
     alignSelf: 'center',
   },

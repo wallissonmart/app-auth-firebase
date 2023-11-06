@@ -1,3 +1,4 @@
+import {colors} from '@styles/index';
 import React from 'react';
 import {StyleSheet, TextInput, TextInputProps} from 'react-native';
 
@@ -6,6 +7,7 @@ const AuthInput = (props: TextInputProps) => {
     <TextInput
       autoCapitalize="none"
       placeholderTextColor="#a59e9e"
+      selectionColor={colors.primary}
       style={stylesAuthInput.input}
       {...props}
     />

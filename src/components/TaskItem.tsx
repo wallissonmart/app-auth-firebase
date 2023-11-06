@@ -58,7 +58,7 @@ export default TaskItem;
 
 const stylesTaskItem = StyleSheet.create({
   row: {
-    height: 40,
+    height: 44,
     flexDirection: 'row',
     width: '100%',
     alignItems: 'center',
@@ -67,8 +67,9 @@ const stylesTaskItem = StyleSheet.create({
   },
   nameInput: {
     marginLeft: 6,
-    fontSize: 18,
+    fontSize: 20,
     color: '#000',
+    padding: 0,
   },
   actions: {
     flexDirection: 'row',
@@ -76,7 +77,7 @@ const stylesTaskItem = StyleSheet.create({
     marginLeft: 5,
   },
   iconDelete: {
-    fontSize: 20,
+    fontSize: 22,
     color: '#dd0f0f',
   },
 });

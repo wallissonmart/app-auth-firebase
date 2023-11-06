@@ -11,6 +11,7 @@ export interface Task {
 export const useHome = () => {
   const [tasks, setTasks] = useState<Task[]>([]);
   const [taskName, setTaskName] = useState<string>('');
+  const [refreshing, setRefreshing] = useState(false);
   const [loading, setLoading] = useState(true);
 
   function toggleTask(index: number) {
@@ -20,6 +21,8 @@ export const useHome = () => {
   }
 
   function getTasksPrivate() {
+    console.log('call private api tasks');
+
     const subscriber = firebase
       .firestore()
       .collection('tasks')
@@ -53,7 +56,9 @@ export const useHome = () => {
     // Unsubscribe from events when no longer in use
     return () => subscriber();
   }
+
   function getTasks(idUser: string) {
+    console.log('call api tasks');
     const subscriber = firebase
       .firestore()
       .collection('tasks')
@@ -143,6 +148,7 @@ export const useHome = () => {
 
   return {
     setTaskName,
+    setRefreshing,
     getTasks,
     getTasksPrivate,
     addNewTask,
@@ -151,6 +157,7 @@ export const useHome = () => {
     toggleTask,
     editTaskName,
     taskName,
+    refreshing,
     loading,
     tasks,
   };
