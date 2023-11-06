@@ -120,7 +120,7 @@ const HomeScreen = () => {
       <FlatList
         data={tasks}
         renderItem={renderItem}
-        style={{width: '100%'}}
+        style={stylesHome.list}
         refreshControl={
           <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
         }
@@ -136,6 +136,9 @@ const stylesHome = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  list: {
+    width: '100%',
   },
   row: {
     flexDirection: 'row',
