@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, Text} from 'react-native';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-fut.png';
 import {styles} from '@styles/index';
 import {useSingUp} from '@hooks/useSignUp';
 

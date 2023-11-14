@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Image} from 'react-native';
 
-import logo from '../assets/logo.png';
+import logo from '../assets/logo-fut.png';
 import {styles} from '@styles/index';
 import {useSignIn} from '@hooks/useSignIn';
 import SignUpLink from '@components/SignUpLink';
