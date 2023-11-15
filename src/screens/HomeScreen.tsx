@@ -9,7 +9,7 @@ import {
   RefreshControl,
 } from 'react-native';
 import auth from '@react-native-firebase/auth';
-import {styles} from '@styles/index';
+import {colors, styles} from '@styles/index';
 import HomeInput from '@components/HomeInput';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Task, useHome} from '@hooks/useHome';
@@ -56,7 +56,7 @@ const HomeScreen = () => {
   if (loading) {
     return (
       <View style={stylesHome.containerLoad}>
-        <ActivityIndicator color="#000" size={20} />
+        <ActivityIndicator color={colors.primary} size="large" />
       </View>
     );
   }
