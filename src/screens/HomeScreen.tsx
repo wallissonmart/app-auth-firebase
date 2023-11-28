@@ -151,7 +151,7 @@ const stylesHome = StyleSheet.create({
     borderRadius: 8,
     borderColor: '#a59e9e',
     padding: 10,
-    color: '#d81d1d',
+    color: '#000',
     borderWidth: 1,
     width: '82%',
     height: 44,
