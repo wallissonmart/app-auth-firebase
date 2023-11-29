@@ -42,7 +42,7 @@ export const useSingUp = () => {
             Toast.show({
               type: 'errorSignUp',
               text1:
-                'Endereço de e-mail inválido. Verifique o formato do e-mail!',
+                'Endereço de e-mail inválido. Verifique o formato do e-mail.',
             });
             break;
           case 'auth/wrong-password':
