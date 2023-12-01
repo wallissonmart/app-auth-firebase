@@ -24,7 +24,7 @@ const Routes = () => {
   if (initializing) {
     return (
       <View style={styles.containerSplashScreen}>
-        <ActivityIndicator color={colors.primary} size="small" />
+        <ActivityIndicator color={colors.primary} size="large" />
       </View>
     );
   }
