@@ -8,7 +8,6 @@ import UserRoutes from './user.routes';
 
 const Routes = () => {
   const [initializing, setInitializing] = useState(true);
-  const [load, setLoad] = useState(false);
   const [user, setUser] = useState<FirebaseAuthTypes.User | null>(null);
 
   useEffect(() => {
